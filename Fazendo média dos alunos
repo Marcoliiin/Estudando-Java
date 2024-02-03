@@ -5,15 +5,14 @@ public class Main {
         System.out.println("Informe a quantidade de notas que você vai comparar:");
 
 
-        Scanner sc = new Scanner(System.in);           /* declarando variável da classe Scanner       */
-        int quantidade = sc.nextInt();                 /*  transformando o valor do Scanner em inteiro*/
+        Scanner sc = new Scanner(System.in);           /* declarando variável da classe Scanner        */
+        int quantidade = sc.nextInt();                 /*  transformando o valor do Scanner em inteiro */
 
-        int nota[] = new int[quantidade];             /* declarando vetor                            */
+        int[] nota = new int[quantidade];              /* declarando vetor                             */
 
         int x = 0;
         int soma = 0;
         int media = 0;
-
 
 
         for (x = 0; x < quantidade; x++) {
