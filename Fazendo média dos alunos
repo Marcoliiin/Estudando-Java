@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Informe a quantidade de notas que você vai comparar:");
+
+
+        Scanner sc = new Scanner(System.in);           /* declarando variável da classe Scanner       */
+        int quantidade = sc.nextInt();                 /*  transformando o valor do Scanner em inteiro*/
+
+        int nota[] = new int[quantidade];             /* declarando vetor                            */
+
+        int x = 0;
+        int soma = 0;
+        int media = 0;
+
+
+
+        for (x = 0; x < quantidade; x++) {
+            System.out.println("Escreva uma nota");
+            nota[x] = sc.nextInt();
+
+            soma += nota[x];
+        }
+
+        media = soma / quantidade;
+        System.out.println("A média das notas da sua turma é " + media);
+    }
+}
