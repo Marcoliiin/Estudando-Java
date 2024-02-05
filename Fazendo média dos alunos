@@ -1,11 +1,11 @@
 import java.util.Scanner;
-
-public class Media {
+public class Main {
     public static void main(String[] args) {
         System.out.println("Informe a quantidade de notas que você vai comparar:");
 
         Scanner sc = new Scanner(System.in);
         int[] nota = new int[sc.nextInt()];
+int tamanho = nota.length;
 
         float soma = 0;
 
@@ -31,8 +31,8 @@ public class Media {
                     nota[i] = sc.nextInt();
                     soma2 += nota[i];
                 }
-                
-                float media = (soma + soma2) / nota.length;
+
+                float media = (soma + soma2) / (nota.length + tamanho);
                 System.out.println("A média das notas da sua turma é: " + media);
                 break;
 
