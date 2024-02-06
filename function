@@ -8,10 +8,10 @@ public class Nome {
             System.out.println("Escreva um número");
             vetor[i] = sc.nextDouble();
         }
-        return vetor;
+        return vetor;  /* passando variável */
     }
 
-    static void soma(double[] vetor) {
+    static void soma(double[] vetor) { /*  passando como parâmetro a variável do tipo VETOR e DOUBLE */
         System.out.println("A soma dos dois números digitados é:" + (vetor[0] + vetor[1]));
     }
 
@@ -32,7 +32,7 @@ public class Nome {
     }
 
     public static void main(String[] args) {
-        double[] vetor = pergunta();
+        double[] vetor = pergunta();   /* variável que chama a function pergunta*/
         soma(vetor);
         subtracao(vetor);
         multiplicacao(vetor);
