@@ -1,49 +1,67 @@
 import java.util.Scanner;
-public class Main {
+import java.util.List;
+import java.util.ArrayList;
+
+
+/*     Uma loja está levantando o valor total de todas as mercadorias em estoque.
+       Escreva um algoritmo que permita a entrada das seguintes informações: a) o
+       número total de mercadorias no estoque; b) o valor de cada mercadoria. Ao final
+       imprimir o valor total em estoque e a média de valor das mercadorias.*/
+
+
+public class Mercado {
+    static Scanner sc = new Scanner(System.in);
+    static int quantidade = sc.nextInt();
+
+    static double[] estoque = new double[quantidade];
+    static double[] valor = new double[quantidade];
+    static String[] nome = new String[quantidade];
+    static String[] lista = new String[quantidade];
+    static String concat;
+
+    static String[] nomes(double quantidade) {
+        for (int i = 0; i < quantidade; i++) {
+            System.out.println("Digite o nome da mercadoria: ");
+            nome[i] = sc.nextLine();
+            concat = nome[i];
+            lista[i] = concat;
+        }
+        return nome;
+    }
+
+    static double[] valores(double quantidade) {
+        for (int i = 0; i < quantidade; i++) {
+            System.out.println("Produto: " + nome[i]);
+            System.out.println("Digite o valor do produto: ");
+            valor[i] = sc.nextDouble();
+            sc.nextLine();
+            concat = "Produto: " + lista[i] + "\nPreço: " + valor[i];
+            lista[i] = concat;
+        }
+        return valor;
+    }
+
+    static double[] estoque(double quantidade) {
+        for (int i = 0; i < quantidade; i++) {
+            System.out.println("Produto: " + nome[i]);
+            System.out.println("Digite o estoque do produto: ");
+            estoque[i] = sc.nextDouble();
+            sc.nextLine();
+            concat = lista[i] + "\nEstoque: " + (int) estoque[i];
+            lista[i] = concat;
+        }
+        return estoque;
+    }
+
+
     public static void main(String[] args) {
-        System.out.println("Informe a quantidade de notas que você vai comparar:");
+        System.out.println("Quantos produtos você irá cadastrar?");
+        double quantidade = sc.nextDouble();
+        sc.nextLine();
 
-        Scanner sc = new Scanner(System.in);
-        int[] nota = new int[sc.nextInt()];
-int tamanho = nota.length;
-
-        float soma = 0;
-
-        for (int i = 0; i < nota.length; i++) {
-            System.out.println("Escreva uma nota");
-            nota[i] = sc.nextInt();
-            soma += nota[i];
-        }
-
-        System.out.println("Quer adicionar mais algum aluno?");
-        sc = new Scanner(System.in);
-        String resposta = sc.nextLine();
-
-        switch (resposta) {
-            case "Sim":
-                System.out.println("Quantos alunos você quer adicionar?");
-                nota = new int[sc.nextInt()];
-
-                float soma2 = 0;
-
-                for (int i = 0; i < nota.length; i++) {
-                    System.out.println("Escreva uma nota");
-                    nota[i] = sc.nextInt();
-                    soma2 += nota[i];
-                }
-
-                float media = (soma + soma2) / (nota.length + tamanho);
-                System.out.println("A média das notas da sua turma é: " + media);
-                break;
-
-            case "Não":
-                media = soma / nota.length;
-                System.out.println("A média dos seus alunos é: " + media);
-                break;
-
-            default:
-                System.out.println("Esta não é uma opção válida");
-        }
-
+        nomes(quantidade);
+        valores(quantidade);
+        estoque(quantidade);
+        System.out.println(lista[0]);
     }
 }
