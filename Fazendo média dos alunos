@@ -57,13 +57,19 @@ public class Mercado {
     }
 
     static String[] catalogo(int quantidade) {
+        double soma = 0;
+        double soma2 = 0;
         nomes(quantidade);
         valores(quantidade);
         estoque(quantidade);
         for (int i = 0; i < quantidade; i++) {
             System.out.println(lista[i] + "\n");
+            soma = soma + valor[i];
+            soma2 = soma2 + estoque[i];
             ;
         }
+        System.out.println("Soma total do valor dos produtos: " + soma);
+        System.out.println("Soma total do estoque dos produtos: " + soma2);
         return lista;
     }
 
