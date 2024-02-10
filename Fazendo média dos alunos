@@ -11,15 +11,16 @@ import java.util.ArrayList;
 
 public class Mercado {
     static Scanner sc = new Scanner(System.in);
-    static int quantidade = sc.nextInt();
 
-    static double[] estoque = new double[quantidade];
-    static double[] valor = new double[quantidade];
-    static String[] nome = new String[quantidade];
-    static String[] lista = new String[quantidade];
+    static double[] estoque;
+    static double[] valor;
+    static String[] nome;
+    static String[] lista;
     static String concat;
 
-    static String[] nomes(double quantidade) {
+    static String[] nomes(int quantidade) {
+        nome = new String[quantidade];
+        lista = new String[quantidade];
         for (int i = 0; i < quantidade; i++) {
             System.out.println("Digite o nome da mercadoria: ");
             nome[i] = sc.nextLine();
@@ -29,7 +30,8 @@ public class Mercado {
         return nome;
     }
 
-    static double[] valores(double quantidade) {
+    static double[] valores(int quantidade) {
+        valor = new double[quantidade];
         for (int i = 0; i < quantidade; i++) {
             System.out.println("Produto: " + nome[i]);
             System.out.println("Digite o valor do produto: ");
@@ -41,7 +43,8 @@ public class Mercado {
         return valor;
     }
 
-    static double[] estoque(double quantidade) {
+    static double[] estoque(int quantidade) {
+        estoque = new double[quantidade];
         for (int i = 0; i < quantidade; i++) {
             System.out.println("Produto: " + nome[i]);
             System.out.println("Digite o estoque do produto: ");
@@ -53,15 +56,22 @@ public class Mercado {
         return estoque;
     }
 
-
-    public static void main(String[] args) {
-        System.out.println("Quantos produtos você irá cadastrar?");
-        double quantidade = sc.nextDouble();
-        sc.nextLine();
-
+    static String[] catalogo(int quantidade) {
         nomes(quantidade);
         valores(quantidade);
         estoque(quantidade);
-        System.out.println(lista[0]);
+        for (int i = 0; i < quantidade; i++) {
+            System.out.println(lista[i] + "\n");
+            ;
+        }
+        return lista;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Quantos produtos você irá cadastrar?");
+        int quantidade = sc.nextInt();
+        sc.nextLine();
+
+        catalogo(quantidade);
     }
 }
