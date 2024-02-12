@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Classes {
@@ -32,23 +33,75 @@ public class Classes {
                     break;
                 }
 
-
-                System.out.println("Digite o endereço da pessoa: ");
-                String endereco = sc.nextLine();
-
-                System.out.println("Digite o seu CPF (somente números): ");
+                System.out.println("Digite o CPF da pessoa (somente números): ");
                 String cpfcru = sc.nextLine();
 
-                if (cpfcru.length() < 11) {                 /*Somente validando se a pessoa inseriu 11 digitos (tamanho do CPF)*/
+                if (cpfcru.length() != 11) {                 /*Somente validando se a pessoa inseriu 11 digitos (tamanho do CPF)*/
                     System.out.println("CPF inválido.");
                     break;
                 }
 
-                pessoa novapessoa = new pessoa(nome, idade, endereco);
+                for (int i = 0; i < cpfcru.length(); i++) {
+                    if (!Character.isDigit(cpfcru.charAt(i))) {
+                        System.out.println("Este não é um CPF válido pois possui um caractere que não é uma letra.");
+                        break;
+                    }
+                }
+
+                System.out.println("Digite a seguir o endereço da pessoa");
+                System.out.println("Rua: ");
+                String rua = sc.nextLine();
+                System.out.println("Bairro: ");
+                String bairro = sc.nextLine();
+                System.out.println("Cidade: ");
+                String cidade = sc.nextLine();
+                System.out.println("Estado: ");
+                String estado = sc.nextLine();
+                System.out.println("Vocẽ mora em casa ou em apartamento? (casa/apto)");
+                String tipo = sc.nextLine().trim();
+
+
+                String num = "";
+                String endereco = "";
+
+                switch (tipo) {
+                    case "casa":
+                        System.out.println("Número da casa: ");
+                        num = sc.nextLine();
+                        endereco = (rua + "," + num + " Bairro: " + bairro + " Cidade: " + cidade + "," + " Estado: " + estado);
+                        break;
+
+                    case "apto":
+                        System.out.println("Qual o número do seu prédio/condomínio?");
+                        String num1 = sc.nextLine();
+                        System.out.println("Qual andar vocẽ mora? (digite apenas o número)");
+                        int andar = sc.nextInt();
+                        sc.nextLine();
+                        System.out.println("Qual o número do seu apartamento?");
+                        num = sc.nextLine();
+                        System.out.println("Sua residência é dividada em blocos? (sim/nao)");
+                        String blocos = sc.nextLine();
+                        switch (blocos) {
+                            case "nao":
+                                blocos = "Não possui blocos";
+                                endereco = ("Rua: " + rua + "," + num + " Bloco: " + blocos + " Apartamento: " + num + " Andar: " + andar + " Bairro: " + bairro + " Cidade: " + cidade + "," + " Estado: " + estado);
+                                break;
+
+                            case "sim":
+                                System.out.println("Digite o número/letra do seu bloco: ");
+                                blocos = sc.nextLine();
+                                endereco = ("Rua: " + rua + "," + num1 + " Bloco: " + blocos + " Apartamento: " + num + " Andar: " + andar + " Bairro: " + bairro + " Cidade: " + cidade + "," + " Estado: " + estado);
+                                break;
+                        }
+                        break;
+                }
+
+                pessoa novapessoa = new pessoa(nome);
                 System.out.println(novapessoa.nome);
-                System.out.println(novapessoa.endereco);
-                novapessoa.idadeformatada();
-                novapessoa.cpf(sc, cpfcru);
+                novapessoa.logradouro(endereco);
+                novapessoa.idadeformatada(idade);
+                novapessoa.cpf(cpfcru);
+
                 break;
 
             case "nao":
@@ -63,21 +116,21 @@ public class Classes {
 
 class pessoa {
     public String nome;
-    public double idade;
-    public String endereco;
 
-    public pessoa(String nome, double idade, String endereco) {
+    public pessoa(String nome) {
         this.nome = nome;
-        this.idade = idade;
-        this.endereco = endereco;
     }
 
-    public void idadeformatada() {
+    public void logradouro(String endereco) {
+        System.out.println(endereco);
+    }
+
+    public void idadeformatada(double idade) {
         String formatidade = String.format("%.0f", idade); /*Faz com que tire as casas decimais, no caso foi usado para formatar a idade que está em double*/
-        System.out.println(formatidade + "anos");
+        System.out.println(formatidade + " anos");
     }
 
-    public void cpf(Scanner sc, String cpfcru) {
+    public void cpf(String cpfcru) {
 
         String cpfformatado = cpfcru;
         cpfformatado = cpfformatado.replaceFirst("(\\d{3})(\\d{3})(\\d{3})(\\d{2})", "$1.$2.$3-$4"); /*função para dividir uma String por partes, fazendo com que seja possível formatar ela*/
