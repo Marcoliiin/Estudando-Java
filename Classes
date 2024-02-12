@@ -1,0 +1,86 @@
+import java.util.Scanner;
+
+public class Classes {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Você quer criar um novo usuário? (sim/nao): ");
+        String validacao = sc.nextLine();
+
+        switch (validacao) {
+            case "sim":
+
+                System.out.println("Digite o nome da pessoa: ");
+                String nome = sc.nextLine();
+
+                for (int i = 0; i < nome.length(); i++) {
+                    if (!Character.isLetter(nome.charAt(i))) {     /*Aqui estamos validando char por char da String para ver se ela possui algum número, por isso do laço de repetição. charAt seta a posição*/
+                        System.out.println("Este não é um nome válido pois possui um caractere que não é uma letra.");
+                        break;
+                    }
+                }
+
+                System.out.println("Digite a idade da pessoa (apenas em anos): ");
+                double idade;
+
+                if (sc.hasNextDouble()) {          /*haxNextDouble verifica se o valor que está entrando PODE SER um Double, caso seja, ele retorna true, fazendo com que o laço entre no If e não no Else*/
+                    idade = sc.nextDouble();
+                    sc.nextLine();
+                } else {
+                    System.out.println("Esta não é uma idade válida pois possui um caractere que não é um número.");
+                    break;
+                }
+
+
+                System.out.println("Digite o endereço da pessoa: ");
+                String endereco = sc.nextLine();
+
+                System.out.println("Digite o seu CPF (somente números): ");
+                String cpfcru = sc.nextLine();
+
+                if (cpfcru.length() < 11) {                 /*Somente validando se a pessoa inseriu 11 digitos (tamanho do CPF)*/
+                    System.out.println("CPF inválido.");
+                    break;
+                }
+
+                pessoa novapessoa = new pessoa(nome, idade, endereco);
+                System.out.println(novapessoa.nome);
+                System.out.println(novapessoa.endereco);
+                novapessoa.idadeformatada();
+                novapessoa.cpf(sc, cpfcru);
+                break;
+
+            case "nao":
+                System.out.println("Programa finalizado.");
+                break;
+
+            default:
+                System.out.println("Opção inválida. Programa finalizado.");
+        }
+    }
+}
+
+class pessoa {
+    public String nome;
+    public double idade;
+    public String endereco;
+
+    public pessoa(String nome, double idade, String endereco) {
+        this.nome = nome;
+        this.idade = idade;
+        this.endereco = endereco;
+    }
+
+    public void idadeformatada() {
+        String formatidade = String.format("%.0f", idade); /*Faz com que tire as casas decimais, no caso foi usado para formatar a idade que está em double*/
+        System.out.println(formatidade + "anos");
+    }
+
+    public void cpf(Scanner sc, String cpfcru) {
+
+        String cpfformatado = cpfcru;
+        cpfformatado = cpfformatado.replaceFirst("(\\d{3})(\\d{3})(\\d{3})(\\d{2})", "$1.$2.$3-$4"); /*função para dividir uma String por partes, fazendo com que seja possível formatar ela*/
+        System.out.println("CPF: " + cpfformatado);
+    }
+}
