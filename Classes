@@ -84,13 +84,13 @@ public class Classes {
                         switch (blocos) {
                             case "nao":
                                 blocos = "Não possui blocos";
-                                endereco = ("Rua: " + rua + "," + num + " Bloco: " + blocos + " Apartamento: " + num + " Andar: " + andar + " Bairro: " + bairro + " Cidade: " + cidade + "," + " Estado: " + estado);
+                                endereco = ("Rua: " + rua + "," + num + "\nBloco: " + blocos + " Apartamento: " + num + " Andar: " + andar + "\nBairro: " + bairro + " Cidade: " + cidade + "," + " Estado: " + estado);
                                 break;
 
                             case "sim":
                                 System.out.println("Digite o número/letra do seu bloco: ");
                                 blocos = sc.nextLine();
-                                endereco = ("Rua: " + rua + "," + num1 + " Bloco: " + blocos + " Apartamento: " + num + " Andar: " + andar + " Bairro: " + bairro + " Cidade: " + cidade + "," + " Estado: " + estado);
+                                endereco = ("Rua: " + rua + "," + num1 + "\nBloco: " + blocos + " Apartamento: " + num + " Andar: " + andar + "\nBairro: " + bairro + " Cidade: " + cidade + "," + " Estado: " + estado);
                                 break;
                         }
                         break;
@@ -127,7 +127,7 @@ class pessoa {
 
     public void idadeformatada(double idade) {
         String formatidade = String.format("%.0f", idade); /*Faz com que tire as casas decimais, no caso foi usado para formatar a idade que está em double*/
-        System.out.println(formatidade + " anos");
+        System.out.println("Idade:" + formatidade + " anos");
     }
 
     public void cpf(String cpfcru) {
