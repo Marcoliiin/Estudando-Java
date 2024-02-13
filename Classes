@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Classes {
@@ -18,6 +17,15 @@ public class Classes {
                 for (int i = 0; i < nome.length(); i++) {
                     if (!Character.isLetter(nome.charAt(i))) {     /*Aqui estamos validando char por char da String para ver se ela possui algum número, por isso do laço de repetição. charAt seta a posição*/
                         System.out.println("Este não é um nome válido pois possui um caractere que não é uma letra.");
+                        break;
+                    }
+                }
+
+                System.out.println("Digie o sobrenome da pessoa: ");
+                String sobrenome = sc.nextLine();
+                for (int i = 0; i < nome.length(); i++) {
+                    if (!Character.isLetter(sobrenome.charAt(i))) {
+                        System.out.println("Este não é um sobrenome válido pois possui um caractere que não é uma letra.");
                         break;
                     }
                 }
@@ -96,7 +104,7 @@ public class Classes {
                         break;
                 }
 
-                pessoa novapessoa = new pessoa(nome);
+                pessoa novapessoa = new pessoa(nome,sobrenome);
                 System.out.println(novapessoa.nome);
                 novapessoa.logradouro(endereco);
                 novapessoa.idadeformatada(idade);
@@ -117,8 +125,8 @@ public class Classes {
 class pessoa {
     public String nome;
 
-    public pessoa(String nome) {
-        this.nome = nome;
+    public pessoa(String nome, String sobrenome) {
+        this.nome = (nome + " " + sobrenome);
     }
 
     public void logradouro(String endereco) {
@@ -127,7 +135,7 @@ class pessoa {
 
     public void idadeformatada(double idade) {
         String formatidade = String.format("%.0f", idade); /*Faz com que tire as casas decimais, no caso foi usado para formatar a idade que está em double*/
-        System.out.println("Idade:" + formatidade + " anos");
+        System.out.println("Idade: " + formatidade + " anos");
     }
 
     public void cpf(String cpfcru) {
