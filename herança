@@ -1,0 +1,78 @@
+import java.sql.SQLOutput;
+import java.util.Scanner;
+
+public class Heranca {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String nomep = "";
+        String olhosp = "";
+        String cabelop = "";
+        String alturap = "";
+
+        System.out.println("Qual o nome do pai?");
+        nomep = sc.nextLine();
+
+        System.out.println("Qual a cor dos olhos do pai?");
+        olhosp = sc.nextLine();
+
+        System.out.println("Qual a cor do cabelo do pai?");
+        cabelop = sc.nextLine();
+
+        System.out.println("O pai é alto, mediano ou baixo?");
+        alturap = sc.nextLine();
+
+        father newfather = new father(nomep, olhosp, cabelop, alturap);
+
+        String nomem = "";
+        String olhosm = "";
+        String cabelom = "";
+        String alturam = "";
+
+        System.out.println("Qual o nome da mãe?");
+        nomem = sc.nextLine();
+
+        System.out.println("Qual a cor dos olhos da mãe?");
+        olhosm = sc.nextLine();
+
+        System.out.println("Qual a cor do cabelo da mãe?");
+        cabelom = sc.nextLine();
+
+        System.out.println("A mãe é alta, mediana ou baixa?");
+        alturam = sc.nextLine();
+
+        mother newmother = new mother(nomem, olhosm, cabelom, alturam);
+    }
+}
+
+class father {
+    public String nome;
+    public String olhos;
+    public String cabelo;
+    public String altura;
+
+    public father(String nomep, String olhosp, String cabelop, String alturap) {
+        this.nome = nomep;
+        this.olhos = olhosp;
+        this.cabelo = cabelop;
+        this.altura = alturap;
+    }
+}
+
+class mother {
+    public String nome;
+    public String olhos;
+    public String cabelo;
+    public String metabolismo;
+
+    public mother(String nomem, String olhosm, String cabelom, String metabolismom) {
+        this.nome = nomem;
+        this.olhos = olhosm;
+        this.cabelo = cabelom;
+        this.metabolismo = metabolismom;
+    }
+}
+
+class son {
+
+}
