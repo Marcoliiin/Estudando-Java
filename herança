@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Heranca {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
+        String nomef = "Gabriel";
         String nomep = "";
         String olhosp = "";
         String cabelop = "";
@@ -22,10 +22,10 @@ public class Heranca {
         alturap = sc.nextLine();
 
         father newfather = new father(nomep, olhosp, cabelop, alturap);
-        son newson = new son(nomep, olhosp, cabelop, alturap);
+        son newson = new son(nomef, olhosp, cabelop, alturap);
 
         newfather.fatherp(nomep, olhosp, cabelop, alturap);
-        newson.sonp(nomep, olhosp, cabelop, alturap);
+        newson.sonp(olhosp, cabelop, alturap);
     }
 }
 
@@ -48,18 +48,18 @@ class father {
 }
 
 class son extends father {
+    public String nomef;
 
-    public son(String nomep, String olhosp, String cabelop, String alturap) {
-        super(nomep, olhosp, cabelop, alturap);
-
-        this.nome = nomep;
+    public son(String nomef, String olhosp, String cabelop, String alturap) {
+        super(nomef, olhosp, cabelop, alturap);
+        this.nomef = nomef;
         this.olhos = olhosp;
         this.cabelo = cabelop;
         this.altura = alturap;
     }
 
-    public void sonp(String nomep, String olhosp, String cabelop, String alturap) {
-        System.out.println("Nome do filho: " + nomep + " Olhos do filho: " + olhosp + " Cabelo do filho: " + cabelop + " Altura do filho: " + alturap);
+    public void sonp(String olhosp, String cabelop, String alturap) {
+        System.out.println("Nome do filho: " + nomef + " Olhos do filho: " + olhosp + " Cabelo do filho: " + cabelop + " Altura do filho: " + alturap);
     }
 
 }
