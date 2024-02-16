@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Heranca {
@@ -23,25 +22,10 @@ public class Heranca {
         alturap = sc.nextLine();
 
         father newfather = new father(nomep, olhosp, cabelop, alturap);
+        son newson = new son(nomep, olhosp, cabelop, alturap);
 
-        String nomem = "";
-        String olhosm = "";
-        String cabelom = "";
-        String alturam = "";
-
-        System.out.println("Qual o nome da mãe?");
-        nomem = sc.nextLine();
-
-        System.out.println("Qual a cor dos olhos da mãe?");
-        olhosm = sc.nextLine();
-
-        System.out.println("Qual a cor do cabelo da mãe?");
-        cabelom = sc.nextLine();
-
-        System.out.println("A mãe é alta, mediana ou baixa?");
-        alturam = sc.nextLine();
-
-        mother newmother = new mother(nomem, olhosm, cabelom, alturam);
+        newfather.fatherp(nomep, olhosp, cabelop, alturap);
+        newson.sonp(nomep, olhosp, cabelop, alturap);
     }
 }
 
@@ -57,22 +41,25 @@ class father {
         this.cabelo = cabelop;
         this.altura = alturap;
     }
-}
 
-class mother {
-    public String nome;
-    public String olhos;
-    public String cabelo;
-    public String metabolismo;
-
-    public mother(String nomem, String olhosm, String cabelom, String metabolismom) {
-        this.nome = nomem;
-        this.olhos = olhosm;
-        this.cabelo = cabelom;
-        this.metabolismo = metabolismom;
+    public void fatherp(String nomep, String olhosp, String cabelop, String alturap) {
+        System.out.println("Nome do pai: " + nomep + " Olhos do pai: " + olhosp + " Cabelo do pai: " + cabelop + " Altura do pai: " + alturap);
     }
 }
 
-class son {
+class son extends father {
+
+    public son(String nomep, String olhosp, String cabelop, String alturap) {
+        super(nomep, olhosp, cabelop, alturap);
+
+        this.nome = nomep;
+        this.olhos = olhosp;
+        this.cabelo = cabelop;
+        this.altura = alturap;
+    }
+
+    public void sonp(String nomep, String olhosp, String cabelop, String alturap) {
+        System.out.println("Nome do filho: " + nomep + " Olhos do filho: " + olhosp + " Cabelo do filho: " + cabelop + " Altura do filho: " + alturap);
+    }
 
 }
