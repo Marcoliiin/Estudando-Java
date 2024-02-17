@@ -1,0 +1,41 @@
+public class polimorfismo {
+    public static void main(String[] args) {
+        String tamanho = "grande";
+        String nome = "nome";
+        String populacoes = "1 milhão";
+
+        cidade newcidade = new cidade(tamanho, nome);
+        cascavel newcascavel = new cascavel(tamanho, nome, populacoes);
+
+        newcidade.populacao();
+        newcascavel.populacao();
+    }
+}
+
+class cidade {
+    public String nome;
+    public String tamanho;
+
+    public cidade(String nome, String tamanho) {
+        this.nome = nome;
+        this.tamanho = tamanho;
+    }
+
+    public void populacao() {
+        System.out.println("População genérica");
+    }
+}
+
+class cascavel extends cidade {
+    public String populacoes;
+
+    public cascavel(String nome, String tamanho, String populacoes) {
+        super(nome, tamanho);
+        this.populacoes = populacoes;
+    }
+
+    @Override
+    public void populacao() {
+        System.out.println("População de Cascavel: " + populacoes);
+    }
+}
