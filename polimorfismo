@@ -8,7 +8,9 @@ public class polimorfismo {
         cascavel newcascavel = new cascavel(tamanho, nome, populacoes);
 
         newcidade.populacao();
+        newcidade.clima();
         newcascavel.populacao();
+        newcascavel.clima();
     }
 }
 
@@ -24,6 +26,10 @@ class cidade {
     public void populacao() {
         System.out.println("População genérica");
     }
+
+    public void clima(){
+        System.out.println("O clima desta cidade é genérico");
+    }
 }
 
 class cascavel extends cidade {
@@ -38,4 +44,10 @@ class cascavel extends cidade {
     public void populacao() {
         System.out.println("População de Cascavel: " + populacoes);
     }
+
+    @Override
+    public void clima(){
+        System.out.println("O clime de Cascavel é Tropical");
+    }
+
 }
